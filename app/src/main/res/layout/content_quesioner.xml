@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="60dp"
+    android:paddingBottom="10dp"
+    android:orientation="vertical"
+    tools:context="com.example.rezafd.cobaback.Activity.Quesioner">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_saveque"
+            style="?android:attr/buttonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="15dp"
+            android:background="#FF6633"
+            android:padding="12dp"
+            android:text="Save"
+            android:textColor="#FFFFFF" />
+        <TextView
+            android:id="@+id/Q1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q1"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kapan anda mulai mencari pekerjaan?"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mohon pekerjaan sambilan tidak dimasukkan"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+        <TextView
+            android:id="@+id/Q1stat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/inputQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Berapa Bulan?" />
+
+        <RadioGroup
+            android:id="@+id/checkq1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/checksblm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sebelum Lulus"
+                android:textSize="16sp"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton
+                android:id="@+id/checkstlh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Setelah Lulus"
+                android:textSize="16sp"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton
+                android:id="@+id/checktidak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Saya Tidak Mencari Pekerjaan"
+                android:textSize="16sp"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(Jika Jawaban tidak Mencari Langsung ke Pertanyaan 6)"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/Q2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q2"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bagaimana anda mencari pekerjaan tersebut ?"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jawaban bisa lebih dari satu"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <CheckBox
+            android:id="@+id/checkQ21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Melalui Iklan di Koran/Majalah, Brosur" />
+
+        <CheckBox
+            android:id="@+id/checkQ22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Melamar ke perusahaan tanpa mengetahui lowongan yang ada" />
+
+        <CheckBox
+            android:id="@+id/checkQ23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pergi ke Bursa/Pameran Kerja" />
+
+        <CheckBox
+            android:id="@+id/checkQ24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mencari lewat Internet/Iklan Online/Milis" />
+
+        <CheckBox
+            android:id="@+id/checkQ25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dihubungi oleh Perusahaan" />
+
+        <CheckBox
+            android:id="@+id/checkQ26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menghubungi Kemenakertrans" />
+
+        <CheckBox
+            android:id="@+id/checkQ27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menghubungi agen tenaga kerja komersial/swasta" />
+
+        <CheckBox
+            android:id="@+id/checkQ28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Memperoleh informasi dari pusat/Kantor Pengembangan Karir Fakultas/Universitas" />
+
+        <CheckBox
+            android:id="@+id/checkQ29"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menghubungi kantor kemahasiswaan/hubungan Alumni" />
+
+        <CheckBox
+            android:id="@+id/checkQ210"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Membangun jaringan (network) sejak masih kuliah" />
+
+        <CheckBox
+            android:id="@+id/checkQ211"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Melalui relasi (misal dosen, orang tua, saudara, teman dll)" />
+
+        <CheckBox
+            android:id="@+id/checkQ212"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Membangun bisnis sendiri" />
+
+        <CheckBox
+            android:id="@+id/checkQ213"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Melalui penempatan kerja atau magang" />
+
+        <CheckBox
+            android:id="@+id/checkQ214"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bekerja di tempat yang sma dengan tempat kerja semasa kuliah" />
+
+        <EditText
+            android:id="@+id/checkQ215"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jawaban Lainnya" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/Q3"
+            style="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q3"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Berapa bulan waktu yang dihabiskan (sebelum dan sesudah kelulusan) untuk memperoleh pekerjaan pertama?"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/inputQ3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 4 bulan" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/Q4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q4"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Berapa perusahaan/instansi/ institusi yang sudah anda lamar (lewat surat atau e-mail) sebelum anda memperoleh pekerjaan pertama?"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/inputQ4"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Jumlah" />
+
+            <TextView
+                android:id="@+id/inputQ4_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perusahaan/Institusi" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/Q5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q5"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Berapa banyak perusahaan/ institusi yang merespon lamaran anda?"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/inputQ5"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="Jumlah" />
+
+            <TextView
+                android:id="@+id/inputQ5_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Perusahaan/Institusi" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/Q6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q6"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apakah anda bekerja saat ini (termasuk kerja sambilan dan wirausaha)?"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ6_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ya"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ6_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tidak"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/Q7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q7"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bagaimana anda menggambarkan situasi anda saat ini?"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ7_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saya masih belajar/melanjutkan kuliah profesi atau pascasarjana"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ7_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saya Menikah"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ7_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saya Sibuk dengan Keluarga dan Anak-Anak"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ7_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saya sekarang sedang mencari pekerjaan"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/inputQ7_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lainnya"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jawaban bisa lebih dari satu"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/Q8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q8"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apakah anda aktif mencari pekerjaan dalam 4 minggu terakhir ?"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ8_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tidak"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ8_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tidak, tapi saya sedang menunggu hasil lamaran kerja"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ8_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tidak, saya akan mulai bekerja dalam 2 minggu ke depan"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ8_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ya, tapi saya belum pasti akan bekerja dalam 2 minggu ke depan"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/inputQ8_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lainnya"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilihlah satu jawaban, KEMUDIAN LANJUT KE F14"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/Q9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q9"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apakah jenis perusahaan/institusi tempat anda bekerja sekarang?"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ9_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instansi Pemerintah (termasuk BUMN)"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ9_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisasi non-profit/Lembaga Swadaya Masyarakat"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ9_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Perusahaan Swasta"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/inputQ9_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wiraswasta/Perusahaan Sendiri"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/inputQ9_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lainnya"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true">
+
+    </ScrollView>
+
+</LinearLayout>

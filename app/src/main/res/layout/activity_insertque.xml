@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.rezafd.cobaback.Activity.Prestasi">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/insNRP"
+        android:hint="Masukan NRP"/>
+
+    <TextView
+        android:id="@+id/Q1_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Q1"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kapan anda mulai mencari pekerjaan?"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mohon pekerjaan sambilan tidak dimasukkan"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+    <TextView
+        android:id="@+id/Q1stat2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=" "
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/Q1bulan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=" bulan "
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/inputQ1_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Berapa Bulan?" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/btnsubmit"/>
+
+    <RadioGroup
+        android:id="@+id/checkq12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/checksblm2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Sebelum Lulus"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/checkstlh2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Setelah Lulus"
+            android:textSize="16sp"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:id="@+id/checktidak2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saya Tidak Mencari Pekerjaan"
+            android:textSize="16sp"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
+
+
+</LinearLayout>
