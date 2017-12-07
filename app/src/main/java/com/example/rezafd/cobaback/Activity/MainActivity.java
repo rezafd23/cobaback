@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else if (id == R.id.nav_quesioner) {
-            Intent intent = new Intent(MainActivity.this, insertque.class);
+            Intent intent = new Intent(MainActivity.this, Quesioner.class);
             startActivity(intent);
         } else if (id == R.id.nav_home){
             Intent intent = new Intent(MainActivity.this, MainActivity.class);

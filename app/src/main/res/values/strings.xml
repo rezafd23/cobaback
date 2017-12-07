@@ -5,4 +5,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="kodeprodi">
+        <item>-</item>
+        <item>20201-Teknik Elektro</item>
+        <item>21201-Teknik Mesin</item>
+        <item>22201-Teknik Sipil</item>
+        <item>23201-Arsitektur</item>
+        <item>24201-Teknik Kimia</item>
+        <item>25201-Teknik Lingkungan</item>
+        <item>26201-Teknik Industri</item>
+        <item>29201-Teknik Industri</item>
+        <item>35201-Perencanaan Wilayah dan Kota</item>
+        <item>55201-Teknik Informatika</item>
+        <item>90221-Desain Interior</item>
+        <item>90231-Desain Produk</item>
+        <item>90241-Desain Komunikasi Visual</item>
+    </string-array>
 </resources>

@@ -103,5 +103,69 @@
             android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/Q3_2"
+        style="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Q3"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Berapa bulan waktu yang dihabiskan (sebelum dan sesudah kelulusan) untuk memperoleh pekerjaan pertama?"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/inputQ3_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="e.g. 4 bulan" />
+
+    <TextView
+        android:id="@+id/Q2_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Q2"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bagaimana anda mencari pekerjaan tersebut ?"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/jawabQ2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="saya"
+        android:textSize="16sp"/>
+
+    <CheckBox
+        android:id="@+id/checkQ21_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Melalui Iklan di Koran/Majalah, Brosur" />
+
+    <CheckBox
+        android:id="@+id/checkQ22_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Melamar ke perusahaan tanpa mengetahui lowongan yang ada" />
+
+    <CheckBox
+        android:id="@+id/checkQ23_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pergi ke Bursa/Pameran Kerja" />
+
+    <CheckBox
+        android:id="@+id/checkQ24_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mencari lewat Internet/Iklan Online/Milis" />
 
 </LinearLayout>
