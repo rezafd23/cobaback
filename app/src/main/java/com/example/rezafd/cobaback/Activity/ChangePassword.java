@@ -14,9 +14,12 @@ import android.widget.Toast;
 
 import com.example.rezafd.cobaback.API.BaseActivity;
 import com.example.rezafd.cobaback.Model.ChangePassResponse;
+import com.example.rezafd.cobaback.Model.Profil;
 import com.example.rezafd.cobaback.R;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChangePassword extends BaseActivity {
     EditText Pass,Pass2,Pass3;
@@ -26,13 +29,6 @@ public class ChangePassword extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        if (getSupportActionBar()!=null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
 
         NRP = (TextView) findViewById(R.id.settingNRP);
         Pass = (EditText) findViewById(R.id.settingCurrentPassword);
@@ -44,6 +40,42 @@ public class ChangePassword extends BaseActivity {
         String iNRP = intent.getStringExtra("NRP");
 
         NRP.setText(iNRP);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            Call<Profil> call = getApi().select_profile(NRP.getText().toString());
+            call.enqueue(new Callback<Profil>() {
+                @Override
+                public void onResponse(Call<Profil> call, Response<Profil> response) {
+                    if (response.isSuccessful()) {
+                        Profil res = response.body();
+                        if (res.isSuccess()) {
+                            Intent intent = new Intent(ChangePassword.this, MainActivity.class);
+                            intent.putExtra("Nama", res.getNama());
+                            intent.putExtra("NRP", res.getNRP());
+                            intent.putExtra("TmptLahir", res.getTmptLahir());
+                            intent.putExtra("TglLahir", res.getTglLahir());
+                            intent.putExtra("Jurusan", res.getJurusan());
+                            intent.putExtra("Alamat", res.getAlamat());
+                            intent.putExtra("NoHP", res.getNoHp());
+                            intent.putExtra("Email", res.getEmail());
+                            startActivity(intent);
+                            finish();
+                            log("berhasil");
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Profil> call, Throwable t) {
+                    log(t.toString());
+                }
+            });
+        }
 
 //        btnupdate.setOnClickListener(new View.OnClickListener() {
 //            @Override

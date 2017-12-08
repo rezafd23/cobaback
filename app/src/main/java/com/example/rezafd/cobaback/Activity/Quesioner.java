@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.rezafd.cobaback.API.ApiRequest;
 import com.example.rezafd.cobaback.API.BaseActivity;
 import com.example.rezafd.cobaback.API.Retroserver;
+import com.example.rezafd.cobaback.Model.Profil;
 import com.example.rezafd.cobaback.Model.QueDResponse;
 import com.example.rezafd.cobaback.Model.ResponsModel;
 import com.example.rezafd.cobaback.R;
@@ -32,8 +33,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Quesioner extends AppCompatActivity {
-    TextView F1,F2,F3,F4,F5,F6,F7,bulan,f3stat,f4stat,Q7stat,jarak;
+public class Quesioner extends BaseActivity {
+    TextView F1,F2,F3,F4,F5,F6,F7,bulan,f3stat,f4stat,Q7stat,jarak, GETNRP;
     EditText input_nrp,inputf3,inputQ3,inputQ4,inputQ5,checkQ2_16,checkQ7_6;
     Button btn_saveque,saveque;
     Spinner checkkodeprodi;
@@ -53,10 +54,6 @@ public class Quesioner extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
         input_nrp=(EditText) findViewById(R.id.input_nrp);
         checkf3=(RadioGroup) findViewById(R.id.checkf3);
         F1=(TextView) findViewById(R.id.F1);
@@ -71,7 +68,46 @@ public class Quesioner extends AppCompatActivity {
         checkkodeprodi=(Spinner) findViewById(R.id.checkkodeprodi);
         jarak=(TextView)findViewById(R.id.jarak);
 
+        GETNRP = (TextView) findViewById(R.id.quesioner_NRP);
 
+        Intent i = getIntent();
+        String iNRP = i.getStringExtra("NRP");
+
+        GETNRP.setText(iNRP);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            Call<Profil> call = getApi().select_profile(GETNRP.getText().toString());
+            call.enqueue(new Callback<Profil>() {
+                @Override
+                public void onResponse(Call<Profil> call, Response<Profil> response) {
+                    pg.hide();
+                    if (response.isSuccessful()) {
+                        Profil res = response.body();
+                        if (res.isSuccess()) {
+                            Intent intent = new Intent(Quesioner.this, MainActivity.class);
+                            intent.putExtra("Nama", res.getNama());
+                            intent.putExtra("NRP", res.getNRP());
+                            intent.putExtra("TmptLahir", res.getTmptLahir());
+                            intent.putExtra("TglLahir", res.getTglLahir());
+                            intent.putExtra("Jurusan", res.getJurusan());
+                            intent.putExtra("Alamat", res.getAlamat());
+                            intent.putExtra("NoHP", res.getNoHp());
+                            intent.putExtra("Email", res.getEmail());
+                            startActivity(intent);
+                            finish();
+                            log("berhasil");
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Profil> call, Throwable t) {
+                    log(t.toString());
+                }
+            });
+        }
 
         saveque.setOnClickListener(new View.OnClickListener() {
             @Override

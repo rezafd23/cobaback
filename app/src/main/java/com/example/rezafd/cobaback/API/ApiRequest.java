@@ -6,6 +6,7 @@ import com.example.rezafd.cobaback.Model.QueDResponse;
 import com.example.rezafd.cobaback.Model.RegisterResponse;
 import com.example.rezafd.cobaback.Model.ResponsModel;
 import com.example.rezafd.cobaback.Model.SelectPassResponse;
+import com.example.rezafd.cobaback.Model.UpdateProfileResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -85,5 +86,18 @@ public interface ApiRequest {
     Call<ChangePassResponse> selectpass(@Field("NRP") String nrp,
                                         @Field("password") String pass);
 
+    @FormUrlEncoded
+    @POST("select_change.php")
+    Call<Profil> select_profile(@Field("NRP") String nrp);
 
+    @FormUrlEncoded
+    @POST("update_pass.php")
+    Call<UpdateProfileResponse> update_profile(@Field("NRP") String nrp,
+                                               @Field("Nama") String nama,
+                                               @Field("TmptLahir") String tmptlahir,
+                                               @Field("TglLahir") String tgllahir,
+                                               @Field("Jurusan") String jurusan,
+                                               @Field("Alamat") String alamat,
+                                               @Field("NoHp") String nohp,
+                                               @Field("Email") String email);
 }

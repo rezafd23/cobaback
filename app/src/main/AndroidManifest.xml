@@ -99,6 +99,14 @@
                 android:value=".Activity.Setting" />
         </activity>
         <activity android:name=".Activity.insertque"></activity>
+        <activity
+            android:name=".Activity.UpdateProfile"
+            android:label="Change Password"
+            android:parentActivityName=".Activity.Setting">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.Setting" />
+        </activity>
     </application>
 
 </manifest>

@@ -8,15 +8,10 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/setNRP"
-        android:text="NRP"/>
-
     <include
-        layout="@layout/app_bar_setting"
+        layout="@layout/app_bar_updateprofile"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </android.support.v4.widget.DrawerLayout>

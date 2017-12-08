@@ -17,4 +17,11 @@
         android:layout_height="wrap_content"
         android:text="Change Password"
         android:textColor="#000"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnUpdateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:textColor="#000"/>
 </LinearLayout>

@@ -13,15 +13,32 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.rezafd.cobaback.API.BaseActivity;
+import com.example.rezafd.cobaback.Model.Profil;
 import com.example.rezafd.cobaback.R;
 
-public class MainActivity extends AppCompatActivity
+import org.w3c.dom.Text;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView nama1,tmptlahir1,tgllahir1,alamat1,noHP1,email1,jurusan1;
+
+    @BindView(R.id.textNRP) TextView NRP1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(MainActivity.this);
+        
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,14 +51,15 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        final TextView NRP1 = (TextView) findViewById(R.id.textNRP);
-        final TextView nama1 = (TextView) findViewById(R.id.textNama);
-        final TextView tmptlahir1 = (TextView) findViewById(R.id.texttmptlahir);
-        final TextView tgllahir1 = (TextView) findViewById(R.id.texttgllahir);
-        final TextView jurusan1 = (TextView) findViewById(R.id.textjurusan);
-        final TextView alamat1 = (TextView) findViewById(R.id.textalamat);
-        final TextView noHP1 = (TextView) findViewById(R.id.textNoHp);
-        final TextView email1 = (TextView) findViewById(R.id.textemail);
+
+       // NRP1 = (TextView) findViewById(R.id.textNRP);
+        nama1 = (TextView) findViewById(R.id.textNama);
+        tmptlahir1 = (TextView) findViewById(R.id.texttmptlahir);
+        tgllahir1 = (TextView) findViewById(R.id.texttgllahir);
+        jurusan1 = (TextView) findViewById(R.id.textjurusan);
+        alamat1 = (TextView) findViewById(R.id.textalamat);
+        noHP1 = (TextView) findViewById(R.id.textNoHp);
+        email1 = (TextView) findViewById(R.id.textemail);
 
         Intent intent = getIntent();
         String nrp = intent.getStringExtra("NRP");
@@ -90,8 +108,14 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(MainActivity.this, Setting.class);
+            intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
             return true;
+        }
+        if(id == R.id.action_logout) {
+            Intent intent1 = new Intent(MainActivity.this, Login.class);
+            startActivity(intent1);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -105,30 +129,62 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_narasumber) {
             Intent intent = new Intent(MainActivity.this, Narasumber.class);
+            intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else if (id == R.id.nav_prestasi) {
             Intent intent = new Intent(MainActivity.this, Prestasi.class);
+            intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else if (id == R.id.nav_pekerjaan) {
             Intent intent = new Intent(MainActivity.this, Pekerjaan.class);
+            intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else if (id == R.id.nav_penelitian) {
             Intent intent = new Intent(MainActivity.this, Penelitian.class);
+            intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else if (id == R.id.nav_pm) {
             Intent intent = new Intent(MainActivity.this, Pm.class);
+            intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         } else if (id == R.id.nav_quesioner) {
             Intent intent = new Intent(MainActivity.this, Quesioner.class);
+            intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
         } else if (id == R.id.nav_home){
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(intent);
+            Call<Profil> call = getApi().select_profile(NRP1.getText().toString());
+            call.enqueue(new Callback<Profil>() {
+                @Override
+                public void onResponse(Call<Profil> call, Response<Profil> response) {
+                    if (response.isSuccessful()) {
+                        Profil res = response.body();
+                        if (res.isSuccess()) {
+                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                            intent.putExtra("Nama", res.getNama());
+                            intent.putExtra("NRP", res.getNRP());
+                            intent.putExtra("TmptLahir", res.getTmptLahir());
+                            intent.putExtra("TglLahir", res.getTglLahir());
+                            intent.putExtra("Jurusan", res.getJurusan());
+                            intent.putExtra("Alamat", res.getAlamat());
+                            intent.putExtra("NoHP", res.getNoHp());
+                            intent.putExtra("Email", res.getEmail());
+                            startActivity(intent);
+                            finish();
+                            log("berhasil");
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Profil> call, Throwable t) {
+                    log(t.toString());
+                }
+            });
             overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
 

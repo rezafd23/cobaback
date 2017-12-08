@@ -15,6 +15,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,30 +25,33 @@
                 android:id="@+id/imageprofile"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="NRP "/>
+                    android:text="NRP "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/textNRP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -55,22 +59,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Nama "/>
+                    android:text="Nama "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/textNama"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,22 +85,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Tempat Lahir "/>
+                    android:text="Tempat Lahir "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/texttmptlahir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -101,22 +111,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Tanggal Lahir "/>
+                    android:text="Tanggal Lahir "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/texttgllahir"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -124,22 +137,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Jurusan "/>
+                    android:text="Jurusan "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/textjurusan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -147,22 +163,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Alamat "/>
+                    android:text="Alamat "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/textalamat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -170,22 +189,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="No HP "/>
+                    android:text="No HP "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/textNoHp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -193,22 +215,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Email "/>
+                    android:text="Email "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" : "/>
+                    android:text=" : "
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/textemail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text=" "/>
+                    android:text=" "
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>

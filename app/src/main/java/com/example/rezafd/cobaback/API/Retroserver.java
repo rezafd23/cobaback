@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class Retroserver {
-    private static final String base_url = "http://192.168.123.5/tracerstudy/";
+    private static final String base_url = "http://172.10.1.71/tracerstudy/";
 
     private static Retrofit retrofit;
 
