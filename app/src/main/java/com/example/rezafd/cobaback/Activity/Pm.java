@@ -63,7 +63,7 @@ public class Pm extends AppCompatActivity{
                 String sTempat =Tempat.getText().toString();
                 ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
 
-                Call<ResponsModel> send = api.sendPm(sNama,sWaktu,sTempat);
+                Call<ResponsModel> send = api.sendQue(sNama,sWaktu,sTempat);
                 send.enqueue(new Callback<ResponsModel>() {
                     @Override
                     public void onResponse(Call<ResponsModel> call, Response<ResponsModel> response) {

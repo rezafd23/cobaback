@@ -49,8 +49,8 @@
         android:textStyle="italic" />
     <TextView
         android:id="@+id/Q1stat2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text=" "
         android:textSize="20sp"/>
 
@@ -87,20 +87,21 @@
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/checkstlh2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Setelah Lulus"
-            android:textSize="16sp"
-            android:onClick="onRadioButtonClicked"/>
-
-        <RadioButton
             android:id="@+id/checktidak2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="Saya Tidak Mencari Pekerjaan"
-            android:textSize="16sp"
-            android:onClick="onRadioButtonClicked"/>
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/checkstlh2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Setelah Lulus"
+            android:textSize="16sp" />
+
     </RadioGroup>
 
     <TextView

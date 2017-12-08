@@ -54,7 +54,7 @@ public class insertque extends AppCompatActivity {
         Q1 = (TextView) findViewById(R.id.Q1_2);
         pg = new ProgressDialog(this);
         btnsumbmit = (Button) findViewById(R.id.btnsubmit);
-        setChecBoxListener();
+       // setChecBoxListener();
 
         btnsumbmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,11 +89,13 @@ public class insertque extends AppCompatActivity {
                         } else {
                             Toast.makeText(insertque.this, "Data Berhasil Ditambah", Toast.LENGTH_SHORT).show();
                         }
-
                     }
 
                     @Override
                     public void onFailure(Call<ResponsModel> call, Throwable t) {
+                        pg.hide();
+                        Log.d("RETRO", "Failure : " + "Gagal Mengirim Request");
+
 
                     }
                 });
@@ -112,49 +114,67 @@ public class insertque extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<ResponsModel> call, Throwable t) {
-
-                    }
-                });
-                send3.enqueue(new Callback<ResponsModel>() {
-                    @Override
-                    public void onResponse(Call<ResponsModel> call, Response<ResponsModel> response) {
                         pg.hide();
-                        Log.d("RETRO","response: "+response.body().toString());
-                        int kode = response.body().getKode();
-                        if (kode==1){
-                            Toast.makeText(insertque.this, " Data Gagal Disimpan", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(insertque.this, " Data Berhasil Ditambah",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponsModel> call, Throwable t) {
+                        Log.d("RETRO", "Failure : " + "Gagal Mengirim Request");
 
                     }
                 });
+//                send2.enqueue(new Callback<ResponsModel>() {
+//                    @Override
+//                    public void onResponse(Call<ResponsModel> call, Response<ResponsModel> response) {
+//                        pg.hide();
+//                        Log.d("RETRO", "response : " + response.body().toString());
+//                        int kode = response.body().getKode();
+//                        if (kode == 1) {
+//                            Toast.makeText(insertque.this, "Data Gagal Disimpan", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(insertque.this, "Data Berhasil Ditambah", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponsModel> call, Throwable t) {
+//
+//                    }
+//                });
+//                send3.enqueue(new Callback<ResponsModel>() {
+//                    @Override
+//                    public void onResponse(Call<ResponsModel> call, Response<ResponsModel> response) {
+//                        pg.hide();
+//                        Log.d("RETRO","response: "+response.body().toString());
+//                        int kode = response.body().getKode();
+//                        if (kode==1){
+//                            Toast.makeText(insertque.this, " Data Gagal Disimpan", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            Toast.makeText(insertque.this, " Data Berhasil Ditambah",Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponsModel> call, Throwable t) {
+//
+//                    }
+//                });
             }
         });
     }
-
     public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
 
         switch (view.getId()) {
             case R.id.checksblm2:
                 if (checked)
-                    statQ12.setText(checksblm2.getText().toString());
+                    statQ12.setText("Sebelum");
                 break;
             case R.id.checkstlh2:
                 if (checked)
-                    statQ12.setText(checkstlh2.getText().toString());
+                    statQ12.setText("Setelah");
                 break;
             case R.id.checktidak2:
                 if (checked)
                     inputQ1.setEnabled(false);
-                    statQ12.setText("Tidak Mencari Pekerjaan");
+                statQ12.setText("Tidak Mencari Pekerjaan");
         }
-
     }
 //    public void onClick(View view){
 //        String a="";
@@ -173,33 +193,33 @@ public class insertque extends AppCompatActivity {
 //        }
 //        Toast.makeText(getApplicationContext(),a,Toast.LENGTH_LONG).show();
 //    }
-    private void setChecBoxListener(){
-        checkQ21_2=(CheckBox) findViewById(R.id.checkQ21_2);
-        checkQ22_2=(CheckBox) findViewById(R.id.checkQ22_2);
-        checkQ23_2=(CheckBox) findViewById(R.id.checkQ23_2);
-        checkQ24_2=(CheckBox) findViewById(R.id.checkQ24_2);
-        checkQ21_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (((CheckBox) view).isChecked()){
-                    a+=checkQ21_2.getText().toString()+";";
-                    temp+=checkQ21_2.getText().toString()+";";
-                    jawabQ2.setText(a);
-                    //  jawabQ2.setText(checkQ21_2.getText().toString());
-                }
-            }
-        });
-        checkQ22_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (((CheckBox) view).isChecked()){
-                    a+=checkQ22_2.getText().toString()+";";
-                    jawabQ2.setText(a);
-                    // jawabQ2.(checkQ22_2.getText().toString());
-                }
-            }
-        });
-
-    }
+//    private void setChecBoxListener(){
+//        checkQ21_2=(CheckBox) findViewById(R.id.checkQ21_2);
+//        checkQ22_2=(CheckBox) findViewById(R.id.checkQ22_2);
+//        checkQ23_2=(CheckBox) findViewById(R.id.checkQ23_2);
+//        checkQ24_2=(CheckBox) findViewById(R.id.checkQ24_2);
+//        checkQ21_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (((CheckBox) view).isChecked()){
+//                    a+=checkQ21_2.getText().toString()+";";
+//                    temp+=checkQ21_2.getText().toString()+";";
+//                    jawabQ2.setText(a);
+//                    //  jawabQ2.setText(checkQ21_2.getText().toString());
+//                }
+//            }
+//        });
+//        checkQ22_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (((CheckBox) view).isChecked()){
+//                    a+=checkQ22_2.getText().toString()+";";
+//                    jawabQ2.setText(a);
+//                    // jawabQ2.(checkQ22_2.getText().toString());
+//                }
+//            }
+//        });
+//
+//    }
 
 }

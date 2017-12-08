@@ -26,7 +26,7 @@ public class BaseActivity extends AppCompatActivity {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.addInterceptor(interceptor);
         Retrofit base = new Retrofit.Builder()
-                .baseUrl("http://192.168.123.5/tracerstudy/")
+                .baseUrl("http://172.10.1.188/tracerstudy/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client.build())
                 .build();
