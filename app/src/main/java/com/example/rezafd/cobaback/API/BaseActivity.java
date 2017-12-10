@@ -1,6 +1,8 @@
 package com.example.rezafd.cobaback.API;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class BaseActivity extends AppCompatActivity {
     ApiRequest api;
 
+    private SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +35,16 @@ public class BaseActivity extends AppCompatActivity {
                 .client(client.build())
                 .build();
         api = base.create(ApiRequest.class);
+
+        sp = getSharedPreferences("TracerStudy", Context.MODE_PRIVATE);
     }
 
     public ApiRequest getApi() {
         return api;
+    }
+
+    public SharedPreferences getSp() {
+        return sp;
     }
 
     public void makeErrorDialog(String msg) {
@@ -47,6 +57,7 @@ public class BaseActivity extends AppCompatActivity {
                 arg0.dismiss();
             }
         });
+
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }

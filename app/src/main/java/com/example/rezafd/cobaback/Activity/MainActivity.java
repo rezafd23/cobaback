@@ -10,12 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rezafd.cobaback.API.BaseActivity;
 import com.example.rezafd.cobaback.Model.Profil;
 import com.example.rezafd.cobaback.R;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -38,10 +41,9 @@ public class MainActivity extends BaseActivity
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(MainActivity.this);
-        
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,6 +53,15 @@ public class MainActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View v = navigationView.getHeaderView(0);
+        ImageView foto = (ImageView) v.findViewById(R.id.imgProfile);
+        Picasso.with(getApplicationContext()).load("http://192.168.43.18/tracerstudy/apache_pb.png")
+                .into(foto);
+        TextView headerNRP = (TextView) v.findViewById(R.id.nav_bar_nrp);
+        headerNRP.setText(getSp().getString("NRP",null));
+        TextView headerNama = (TextView) v.findViewById(R.id.nav_bar_nama);
+        headerNama.setText(getSp().getString("Nama",null));
 
        // NRP1 = (TextView) findViewById(R.id.textNRP);
         nama1 = (TextView) findViewById(R.id.textNama);
@@ -62,8 +73,8 @@ public class MainActivity extends BaseActivity
         email1 = (TextView) findViewById(R.id.textemail);
 
         Intent intent = getIntent();
-        String nrp = intent.getStringExtra("NRP");
-        String nama = intent.getStringExtra("Nama");
+        String nrp = getSp().getString("NRP",null);
+        String nama = getSp().getString("Nama",null);
         String tmptlahir = intent.getStringExtra("TmptLahir");
         String tgllahir = intent.getStringExtra("TglLahir");
         String jurusan = intent.getStringExtra("Jurusan");
@@ -156,36 +167,6 @@ public class MainActivity extends BaseActivity
             Intent intent = new Intent(MainActivity.this, Quesioner.class);
             intent.putExtra("NRP",NRP1.getText());
             startActivity(intent);
-        } else if (id == R.id.nav_home){
-            Call<Profil> call = getApi().select_profile(NRP1.getText().toString());
-            call.enqueue(new Callback<Profil>() {
-                @Override
-                public void onResponse(Call<Profil> call, Response<Profil> response) {
-                    if (response.isSuccessful()) {
-                        Profil res = response.body();
-                        if (res.isSuccess()) {
-                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                            intent.putExtra("Nama", res.getNama());
-                            intent.putExtra("NRP", res.getNRP());
-                            intent.putExtra("TmptLahir", res.getTmptLahir());
-                            intent.putExtra("TglLahir", res.getTglLahir());
-                            intent.putExtra("Jurusan", res.getJurusan());
-                            intent.putExtra("Alamat", res.getAlamat());
-                            intent.putExtra("NoHP", res.getNoHp());
-                            intent.putExtra("Email", res.getEmail());
-                            startActivity(intent);
-                            finish();
-                            log("berhasil");
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Profil> call, Throwable t) {
-                    log(t.toString());
-                }
-            });
-            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

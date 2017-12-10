@@ -33,6 +33,23 @@ public class Narasumber extends BaseActivity {
     EditText Nama, Tempat, Penyelenggara, Tgl;
     Button btnsave;
     ProgressDialog pg;
+    TextView nrp;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,46 +58,13 @@ public class Narasumber extends BaseActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Intent intent = getIntent();
-        String iNRP = intent.getStringExtra("NRP");
-
-        final TextView NRP = (TextView) findViewById(R.id.narasumber_nrp);
-
-        NRP.setText(iNRP);
+        nrp = (TextView) findViewById(R.id.narasumber_nrp);
+        String sNRP = getSp().getString("NRP",null);
+        nrp.setText(sNRP);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-            Call<Profil> call = getApi().select_profile(NRP.getText().toString());
-            call.enqueue(new Callback<Profil>() {
-                @Override
-                public void onResponse(Call<Profil> call, Response<Profil> response) {
-                    pg.hide();
-                    if (response.isSuccessful()) {
-                        Profil res = response.body();
-                        if (res.isSuccess()) {
-                            Intent intent = new Intent(Narasumber.this, MainActivity.class);
-                            intent.putExtra("Nama", res.getNama());
-                            intent.putExtra("NRP", res.getNRP());
-                            intent.putExtra("TmptLahir", res.getTmptLahir());
-                            intent.putExtra("TglLahir", res.getTglLahir());
-                            intent.putExtra("Jurusan", res.getJurusan());
-                            intent.putExtra("Alamat", res.getAlamat());
-                            intent.putExtra("NoHP", res.getNoHp());
-                            intent.putExtra("Email", res.getEmail());
-                            startActivity(intent);
-                            finish();
-                            log("berhasil");
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Profil> call, Throwable t) {
-                    log(t.toString());
-                }
-            });
         }
 
         Nama = (EditText) findViewById(R.id.input_naman);
@@ -102,7 +86,6 @@ public class Narasumber extends BaseActivity {
                 String sPenyelenggara = Penyelenggara.getText().toString();
                 String sTgl = Tgl.getText().toString();
                 ApiRequest api = Retroserver.getClient().create(ApiRequest.class);
-
 
                 Call<ResponsModel> send = api.sendNarasumber(sNama, sTempat, sPenyelenggara, sTgl);
                 send.enqueue(new Callback<ResponsModel>() {

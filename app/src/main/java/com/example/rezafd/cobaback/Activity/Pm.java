@@ -36,6 +36,22 @@ public class Pm extends BaseActivity {
     TextView nrp;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pm);
@@ -44,44 +60,12 @@ public class Pm extends BaseActivity {
         setSupportActionBar(toolbar);
 
         nrp = (TextView) findViewById(R.id.PM_NRP);
-
-        Intent i = getIntent();
-        String iNRP = i.getStringExtra("NRP");
-
+        String iNRP = getSp().getString("NRP",null);
         nrp.setText(iNRP);
 
         if (getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-            Call<Profil> call = getApi().select_profile(nrp.getText().toString());
-            call.enqueue(new Callback<Profil>() {
-                @Override
-                public void onResponse(Call<Profil> call, Response<Profil> response) {
-                    if (response.isSuccessful()) {
-                        Profil res = response.body();
-                        if (res.isSuccess()) {
-                            Intent intent = new Intent(Pm.this, MainActivity.class);
-                            intent.putExtra("Nama", res.getNama());
-                            intent.putExtra("NRP", res.getNRP());
-                            intent.putExtra("TmptLahir", res.getTmptLahir());
-                            intent.putExtra("TglLahir", res.getTglLahir());
-                            intent.putExtra("Jurusan", res.getJurusan());
-                            intent.putExtra("Alamat", res.getAlamat());
-                            intent.putExtra("NoHP", res.getNoHp());
-                            intent.putExtra("Email", res.getEmail());
-                            startActivity(intent);
-                            finish();
-                            log("berhasil");
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Profil> call, Throwable t) {
-                    log(t.toString());
-                }
-            });
         }
 
         Nama=(EditText) findViewById(R.id.input_namapm);

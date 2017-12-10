@@ -2,6 +2,7 @@ package com.example.rezafd.cobaback.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,10 +61,12 @@ public class Login extends BaseActivity implements LoginViewInterface {
 
     @Override
     public void onFinishLogin(Profil res) {
+        SharedPreferences.Editor editor = getSp().edit();
+        editor.putString("NRP",res.getNRP());
+        editor.putString("Nama",res.getNama());
+        editor.commit();
         Toast.makeText(Login.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Login.this, MainActivity.class);
-        intent.putExtra("Nama", res.getNama());
-        intent.putExtra("NRP", res.getNRP());
         intent.putExtra("TmptLahir", res.getTmptLahir());
         intent.putExtra("TglLahir", res.getTglLahir());
         intent.putExtra("Jurusan", res.getJurusan());

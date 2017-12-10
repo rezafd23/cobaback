@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -38,6 +39,22 @@ public class insertque extends BaseActivity {
     EditText inp_nrp;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insertque);
@@ -47,36 +64,8 @@ public class insertque extends BaseActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            Call<Profil> call = getApi().select_profile(inp_nrp.getText().toString());
-            call.enqueue(new Callback<Profil>() {
-                @Override
-                public void onResponse(Call<Profil> call, Response<Profil> response) {
-                    pg.hide();
-                    if (response.isSuccessful()) {
-                        Profil res = response.body();
-                        if (res.isSuccess()) {
-                            Intent intent = new Intent(insertque.this, MainActivity.class);
-                            intent.putExtra("Nama", res.getNama());
-                            intent.putExtra("NRP", res.getNRP());
-                            intent.putExtra("TmptLahir", res.getTmptLahir());
-                            intent.putExtra("TglLahir", res.getTglLahir());
-                            intent.putExtra("Jurusan", res.getJurusan());
-                            intent.putExtra("Alamat", res.getAlamat());
-                            intent.putExtra("NoHP", res.getNoHp());
-                            intent.putExtra("Email", res.getEmail());
-                            startActivity(intent);
-                            finish();
-                            log("berhasil");
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Profil> call, Throwable t) {
-                    log(t.toString());
-                }
-            });
         }
+
         Q2_2=(TextView) findViewById(R.id.Q2_2);
         Q3_2=(TextView) findViewById(R.id.Q3_2);
         jawabQ2=(TextView) findViewById(R.id.jawabQ2);

@@ -63,8 +63,7 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("update_pass_account.php")
     Call<ChangePassResponse> update (@Field("NRP") String nrp,
-                                     @Field("password") String pass,
-                                     @Field("email") String email);
+                                     @Field("password") String pass);
 
     @FormUrlEncoded
     @POST("login.php")

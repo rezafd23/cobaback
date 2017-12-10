@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -47,6 +48,22 @@ public class Quesioner extends BaseActivity {
     String b="",a="";
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quesioner);
@@ -69,44 +86,12 @@ public class Quesioner extends BaseActivity {
         jarak=(TextView)findViewById(R.id.jarak);
 
         GETNRP = (TextView) findViewById(R.id.quesioner_NRP);
-
-        Intent i = getIntent();
-        String iNRP = i.getStringExtra("NRP");
-
+        String iNRP = getSp().getString("NRP",null);
         GETNRP.setText(iNRP);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            Call<Profil> call = getApi().select_profile(GETNRP.getText().toString());
-            call.enqueue(new Callback<Profil>() {
-                @Override
-                public void onResponse(Call<Profil> call, Response<Profil> response) {
-                    pg.hide();
-                    if (response.isSuccessful()) {
-                        Profil res = response.body();
-                        if (res.isSuccess()) {
-                            Intent intent = new Intent(Quesioner.this, MainActivity.class);
-                            intent.putExtra("Nama", res.getNama());
-                            intent.putExtra("NRP", res.getNRP());
-                            intent.putExtra("TmptLahir", res.getTmptLahir());
-                            intent.putExtra("TglLahir", res.getTglLahir());
-                            intent.putExtra("Jurusan", res.getJurusan());
-                            intent.putExtra("Alamat", res.getAlamat());
-                            intent.putExtra("NoHP", res.getNoHp());
-                            intent.putExtra("Email", res.getEmail());
-                            startActivity(intent);
-                            finish();
-                            log("berhasil");
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Profil> call, Throwable t) {
-                    log(t.toString());
-                }
-            });
         }
 
         saveque.setOnClickListener(new View.OnClickListener() {

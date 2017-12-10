@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,15 +23,28 @@ public class Setting extends BaseActivity {
     TextView tvNRP;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
         tvNRP = (TextView) findViewById(R.id.setNRP);
-
-        Intent i = getIntent();
-        String nrp = i.getStringExtra("NRP");
-
+        String nrp = getSp().getString("NRP",null);
         tvNRP.setText(nrp);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -39,34 +53,6 @@ public class Setting extends BaseActivity {
         if (getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-            Call<Profil> call = getApi().select_profile(tvNRP.getText().toString());
-            call.enqueue(new Callback<Profil>() {
-                @Override
-                public void onResponse(Call<Profil> call, Response<Profil> response) {
-                    if(response.isSuccessful()) {
-                        Profil res = response.body();
-                        if(res.isSuccess()) {
-                            Intent intent = new Intent(Setting.this, UpdateProfile.class);
-                            intent.putExtra("Nama", res.getNama());
-                            intent.putExtra("NRP", res.getNRP());
-                            intent.putExtra("TmptLahir", res.getTmptLahir());
-                            intent.putExtra("TglLahir", res.getTglLahir());
-                            intent.putExtra("Jurusan", res.getJurusan());
-                            intent.putExtra("Alamat", res.getAlamat());
-                            intent.putExtra("NoHP", res.getNoHp());
-                            intent.putExtra("Email", res.getEmail());
-                            startActivity(intent);
-                            log("BERHASIL");
-                        }
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<Profil> call, Throwable t) {
-                    log(t.toString());
-                }
-            });
         }
         btnchangepassword =(Button) findViewById(R.id.btnchangepassword);
         btnupdateprofile = (Button) findViewById(R.id.btnUpdateProfile);
